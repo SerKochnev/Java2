@@ -1,7 +1,7 @@
 package lesson_01_homework;
 
-public interface Movable {
-    boolean jump(Wall barrier);
+public interface Movable extends Nameable{
+    void jump(Wall barrier);
 
-    boolean run(RunningTrack barrier);
+    void run(RunningTrack barrier);
 }

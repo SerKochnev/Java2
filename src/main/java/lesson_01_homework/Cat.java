@@ -1,12 +1,16 @@
 package lesson_01_homework;
 
-public class Cat implements Movable{
+public class Cat implements Movable {
+    private String name;
     private double distance;
     private double jumpHeight;
+    private boolean onTrack;
 
-    public Cat(double distance, double jumpHeight) {
+    public Cat(String name, double distance, double jumpHeight) {
+        this.name = name;
         this.distance = distance;
         this.jumpHeight = jumpHeight;
+        this.onTrack = true;
     }
 
     public double getDistance() {
@@ -17,13 +21,22 @@ public class Cat implements Movable{
         return jumpHeight;
     }
 
-    @Override
-    public boolean jump(Wall barrier) {
-        return this.getJumpHeight() >= barrier.getHeight();
+    public boolean isOnTrack() {
+        return onTrack;
     }
 
     @Override
-    public boolean run(RunningTrack barrier) {
-        return this.getDistance() >= barrier.getDistance();
+    public void jump(Wall barrier) {
+        if (this.getJumpHeight() <= barrier.getHeight()) onTrack = false;
+    }
+
+    @Override
+    public void run(RunningTrack barrier) {
+        if (this.getDistance() <= barrier.getDistance()) onTrack = false;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

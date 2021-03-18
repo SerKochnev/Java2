@@ -7,6 +7,11 @@ public class RunningTrack implements Barrier {
         this.distance = distance;
     }
 
+    @Override
+    public void doIt(Movable movable) {
+        movable.run(this);
+    }
+
     public int getDistance() {
         return distance;
     }
