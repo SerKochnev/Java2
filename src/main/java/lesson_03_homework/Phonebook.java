@@ -3,16 +3,16 @@ package lesson_03_homework;
 import java.util.*;
 
 public class Phonebook {
-    private final Map<String, List<Integer>> book = new HashMap<>();
+    private final Map<String, Set<Integer>> book = new HashMap<>();
 
     void add(String lastName, int phone) {
-        List<Integer> list = book.get(lastName);
-        if (list != null) {
-            list.add(phone);
+        Set<Integer> set = book.get(lastName);
+        if (set != null) {
+            set.add(phone);
         } else {
-            list = new ArrayList<>();
-            list.add(phone);
-            book.put(lastName, list);
+            set = new HashSet<>();
+            set.add(phone);
+            book.put(lastName, set);
         }
     }
 
