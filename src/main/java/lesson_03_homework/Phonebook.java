@@ -17,6 +17,10 @@ public class Phonebook {
     }
 
     void get(String lastName) {
+        if (!book.containsKey(lastName)) {
+            System.out.println("No data");
+            return;
+        }
         book.get(lastName).forEach(System.out::println);
     }
 }
